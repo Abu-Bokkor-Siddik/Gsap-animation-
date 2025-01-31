@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP ScrollTrigger Fade-In Animation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
+        .section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            opacity: 0; /* Start hidden */
+            transform: translateY(50px); /* Initial position */
+        }
+        .section:nth-child(even) {
+            background: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="section">Scroll Down</div>
+    <div class="section">I Fade In!</div>
+    <div class="section">GSAP Makes It Easy!</div>
+    <div class="section">Keep Scrolling...</div>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray(".section").forEach(section => {
+            gsap.to(section, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%", // Animation starts when section enters viewport
+                    toggleActions: "play none none reverse" // Plays when scrolling down, reverses when scrolling up
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
