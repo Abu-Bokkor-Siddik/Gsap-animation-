@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP ScrollTrigger Pinning</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
+        .section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            background: #ddd;
+        }
+        .pinned-container {
+            position: relative;
+            height: 200vh; /* Extra height to allow pinning effect */
+            background: #ff5733;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .pinned-element {
+            background: white;
+            color: black;
+            padding: 20px 40px;
+            font-size: 2rem;
+            font-weight: bold;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="section">Scroll Down</div>
+
+    <div class="pinned-container">
+        <div class="pinned-element">I stay pinned!</div>
+    </div>
+
+    <div class="section">Keep Scrolling...</div>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.to(".pinned-element", {
+            scrollTrigger: {
+                trigger: ".pinned-container",
+                start: "top top",
+                end: "bottom top",
+                pin: true, // Enables the sticky effect
+                scrub: true, // Smooth pinning effect
+            }
+        });
+    </script>
+
+</body>
+</html>
