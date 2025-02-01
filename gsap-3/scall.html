@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GSAP Properties Examples</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: #3498db;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+      margin: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #27ae60;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">Box</div>
+
+  <div class="buttons">
+    <button onclick="animateX()">Animate X</button>
+    <button onclick="animateY()">Animate Y</button>
+    <button onclick="animateRotation()">Animate Rotation</button>
+    <button onclick="animateScale()">Animate Scale</button>
+    <button onclick="animateOpacity()">Animate Opacity</button>
+    <button onclick="animateColor()">Animate Color</button>
+    <button onclick="animateTransformOrigin()">Animate Transform Origin</button>
+  </div>
+
+  <!-- Include GSAP Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <script>
+    // Reset box position and styles
+    function resetBox() {
+      gsap.set(".box", {
+        x: 0,
+        y: 0,
+        rotation: 0,
+        scale: 1,
+        opacity: 1,
+        backgroundColor: "#3498db",
+        transformOrigin: "center"
+      });
+    }
+
+    // Animate X (horizontal movement)
+    function animateX() {
+      resetBox();
+      gsap.to(".box", {
+        duration: 2,
+        x: 300, // Move 300px to the right
+        ease: "power2.out"
+      });
+    }
+
+    // Animate Y (vertical movement)
+    function animateY() {
+      resetBox();
+      gsap.to(".box", {
+        duration: 2,
+        y: 200, // Move 200px down
+        ease: "power2.out"
+      });
+    }
+
+    // Animate Rotation
+    function animateRotation() {
+      resetBox();
+      gsap.to(".box", {
+        duration: 2,
+        rotation: 360, // Rotate 360 degrees
+        ease: "power2.out"
+      });
+    }
+
+    // Animate Scale
+    function animateScale() {
+      resetBox();
+      gsap.to(".box", {
+        duration: 2,
+        scale: 6, // Double the size
+        ease: "power2.out"
+      });
+    }
+
+    // Animate Opacity
+    function animateOpacity() {
+      resetBox();
+      gsap.to(".box", {
+        duration: 2,
+        opacity: 0.5, // Reduce opacity to 50%
+        ease: "power2.out"
+      });
+    }
+
+    // Animate Color (background and text color)
+    function animateColor() {
+      resetBox();
+      gsap.to(".box", {
+        duration: 2,
+        backgroundColor: "#e74c3c", // Change background color to red
+        color: "#ffffff", // Change text color to white
+        ease: "power2.out"
+      });
+    }
+
+    // Animate Transform Origin
+    function animateTransformOrigin() {
+      resetBox();
+      gsap.to(".box", {
+        duration: 2,
+        rotation: 360,
+        transformOrigin: "0% 100%", // Rotate around the bottom-left corner
+        ease: "power2.out"
+      });
+    }
+  </script>
+</body>
+</html>
