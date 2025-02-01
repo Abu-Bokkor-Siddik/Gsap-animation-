@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GSAP Timeline Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: #3498db;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .buttons {
+      position: absolute;
+      top: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="buttons">
+    <button onclick="playTimeline()">Play Timeline</button>
+    <button onclick="reverseTimeline()">Reverse Timeline</button>
+  </div>
+
+  <div class="box">Click Me</div>
+
+  <!-- Include GSAP Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <script>
+    // Create a GSAP Timeline
+    const tl = gsap.timeline({ paused: true }); // Paused by default
+
+    // Add animations to the timeline
+    tl.to(".box", {
+      duration: 1,
+      x: 300, // Move 300px to the right
+      ease: "power2.out"
+    })
+    .to(".box", {
+      duration: 1,
+      y: 200, // Move 200px down
+      ease: "power2.out"
+    })
+    .to(".box", {
+      duration: 1,
+      rotation: 360, // Rotate 360 degrees
+      ease: "power2.out"
+    })
+    .to(".box", {
+      duration: 1,
+      opacity: 0.5, // Reduce opacity to 0.5
+      ease: "power2.out"
+    });
+
+    // Play the timeline
+    function playTimeline() {
+      tl.play();
+    }
+
+    // Reverse the timeline
+    function reverseTimeline() {
+      tl.reverse();
+    }
+  </script>
+</body>
+</html>
