@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GSAP Animation Examples</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: #3498db;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .buttons {
+      position: absolute;
+      top: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="buttons">
+    <button onclick="animateTo()">Animate with gsap.to()</button>
+    <button onclick="animateFrom()">Animate with gsap.from()</button>
+    <button onclick="animateFromTo()">Animate with gsap.fromTo()</button>
+  </div>
+
+  <div class="box">Click Me</div>
+
+  <!-- Include GSAP Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <script>
+    // GSAP Animation Functions
+    function animateTo() {
+      gsap.to(".box", {
+        duration: 2,
+        x: 300, // Move 300px to the right
+        rotation: 360, // Rotate 360 degrees
+        opacity: 0.5, // Reduce opacity to 0.5
+        ease: "power2.out" // Easing function
+      });
+    }
+
+    function animateFrom() {
+      gsap.from(".box", {
+        duration: 2,
+        x: 300, // Start from 300px to the right
+        rotation: 360, // Start rotated 360 degrees
+        opacity: 0, // Start with opacity 0
+        ease: "power2.out" // Easing function
+      });
+    }
+
+    function animateFromTo() {
+      gsap.fromTo(".box", {
+        x: 0, // Start from x: 0
+        opacity: 1 // Start with opacity 1
+      }, {
+        duration: 2,
+        x: 300, // Move to x: 300
+        opacity: 0.5, // Reduce opacity to 0.5
+        rotation: 360, // Rotate 360 degrees
+        ease: "power2.out" // Easing function
+      });
+    }
+  </script>
+</body>
+</html>
