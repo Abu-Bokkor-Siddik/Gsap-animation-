@@ -3,42 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sticky Sections with GSAP</title>
+    <title>Horizontal Scrolling with GSAP</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
-        .sticky-container {
-            position: relative;
-            height: 300vh; /* Make the container tall enough to scroll */
+        .horizontal-container {
+            display: flex;
+            width: 300vw; /* 3x viewport width */
+            height: 100vh;
         }
-        .sticky {
-            position: sticky;
-            top: 0;
+        .panel {
+            width: 100vw;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 2em;
             color: white;
-            background-color: #2c3e50;
         }
-        .box {
-            width: 100px;
-            height: 100px;
-            background-color: #3498db;
-            opacity: 0;
-        }
+        .panel-1 { background-color: #3498db; }
+        .panel-2 { background-color: #e74c3c; }
+        .panel-3 { background-color: #2ecc71; }
     </style>
 </head>
 <body>
 
-    <div class="sticky-container">
-        <div class="sticky">
-            <div class="box" id="sticky-box"></div>
-        </div>
+    <div class="horizontal-container">
+        <div class="panel panel-1">Panel 1</div>
+        <div class="panel panel-2">Panel 2</div>
+        <div class="panel panel-3">Panel 3</div>
     </div>
 
     <!-- Include GSAP and ScrollTrigger -->
@@ -48,17 +45,17 @@
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // Sticky section animation
-        gsap.to("#sticky-box", {
-            opacity: 1,
-            x: 300,
-            rotate: 360,
+        // Horizontal scrolling effect
+        gsap.to(".horizontal-container", {
+            xPercent: -200, // Move container by -200% (3 panels)
+            ease: "none",
             scrollTrigger: {
-                trigger: ".sticky-container",
+                trigger: ".horizontal-container",
                 start: "top top",
-                end: "bottom bottom",
+                end: "+=3000", // End after 3000px of scrolling
                 scrub: 1,
-                pin: true // Pin the sticky section while scrolling
+                pin: true, // Pin the container while scrolling
+                anticipatePin: 1
             }
         });
     </script>
