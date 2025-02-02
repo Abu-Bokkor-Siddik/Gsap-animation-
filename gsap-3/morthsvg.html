@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GSAP MorphSVG Animation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    svg {
+      width: 300px;
+      height: 300px;
+    }
+  </style>
+</head>
+<body>
+  <svg viewBox="0 0 100 100">
+    <!-- প্রথম শেপ (বৃত্ত) -->
+    <path id="circle" d="M50,0a50,50 0 1,0 50,50a50,50 0 0,0 -50,-50z" fill="#3498db" />
+    
+    <!-- দ্বিতীয় শেপ (স্টার) -->
+    <path id="star" d="M50,0l12,36h38l-30,22l12,36l-32-22l-32,22l12-36l-30-22h38z" fill="#e74c3c" visibility="hidden" />
+  </svg>
+
+  <!-- GSAP এবং MorphSVGPlugin যোগ করুন -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MorphSVGPlugin.min.js"></script>
+
+  <script>
+    // MorphSVGPlugin রেজিস্টার করুন
+    gsap.registerPlugin(MorphSVGPlugin);
+
+    // MorphSVG অ্যানিমেশন তৈরি
+    gsap.to("#circle", {
+      duration: 3,
+      morphSVG: "#star", // বৃত্ত থেকে স্টারে মর্ফ করুন
+      repeat: -1, // অসীম পুনরাবৃত্তি
+      yoyo: true, // অ্যানিমেশন পিছনে চলবে
+      ease: "power2.inOut"
+    });
+  </script>
+</body>
+</html>
