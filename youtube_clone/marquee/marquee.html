@@ -1,40 +1,62 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-  </head>
-  <body class="bg-gray-400">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            display: flex;
+        }
+        .marquee_inner {
+            display: flex;
+            min-width: 200%;
+            animation: marqueeAnimation 10s linear infinite;
+        }
+        @keyframes marqueeAnimation {
+            from {
+                transform: translateX(0%);
+            }
+            to {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-400">
     <section class="space h-[800px]"></section>
-    <section class="marquee text-black  uppercase  bg-gray-200 ">
-      <div class="marquee_inner flex  ">
-       
-        <!-- st -->
-        <div class="marquee_part flex items-center junstify-center gap-6">
-          Modern creative design
-          <div class="arrow">
-            <img src="./3916800.png" alt="" />
-          </div>
+
+    <section class="marquee text-black uppercase bg-gray-200">
+        <div class="marquee_inner">
+            <div class="flex items-center justify-center gap-6 px-10">
+                Modern creative design
+                <img class="h-[40px] pr-[10px]" src="./3916800.png" alt="Arrow" />
+            </div>
+            <div class="flex items-center justify-center gap-6 px-10">
+                Modern creative design
+                <img class="h-[40px] pr-[10px]" src="./3916800.png" alt="Arrow" />
+            </div>
+            <div class="flex items-center justify-center gap-6 px-10">
+                Modern creative design
+                <img class="h-[40px] pr-[10px]" src="./3916800.png" alt="Arrow" />
+            </div>
+            <!-- Duplicate content for smooth scrolling -->
+            <div class="flex items-center justify-center gap-6 px-10">
+                Modern creative design
+                <img class="h-[40px] pr-[10px]" src="./3916800.png" alt="Arrow" />
+            </div>
+            <div class="flex items-center justify-center gap-6 px-10">
+                Modern creative design
+                <img class="h-[40px] pr-[10px]" src="./3916800.png" alt="Arrow" />
+            </div>
+            <div class="flex items-center justify-center gap-6 px-10">
+                Modern creative design
+                <img class="h-[40px] pr-[10px]" src="./3916800.png" alt="Arrow" />
+            </div>
         </div>
-        <!-- end -->
-        <!-- st -->
-        <div class="marquee_part flex items-center junstify-center gap-6">
-          Modern creative design
-          <div class="arrow">
-            <img src="./3916800.png" alt="" />
-          </div>
-        </div>
-        <!-- end -->
-        <!-- st -->
-        <div class="marquee_part flex items-center junstify-center gap-6">
-          Modern creative design
-          <div class="arrow">
-            <img src="./3916800.png" alt="" />
-          </div>
-        </div>
-        <!-- end -->
-      </div>
     </section>
-  </body>
+
+</body>
 </html>
