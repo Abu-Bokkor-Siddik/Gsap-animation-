@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Circular Slider with GSAP</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
+</head>
+<body>
+    <div class="header">
+        <h1>
+            Human learning <br />
+            Under slider flip in GSAP
+        </h1>
+    </div>
+    <section class="slider_section">
+        <div class="wheel">
+            <!-- Repeat this block for each image -->
+            <div class="wheel_card">
+                <img src="./download.jpg" alt="photo" />
+            </div>
+            <!-- Repeat as needed -->
+            <!-- Repeat this block for each image -->
+            <div class="wheel_card">
+                <img src="./download.jpg" alt="photo" />
+            </div>
+            <!-- Repeat as needed -->
+            <!-- Repeat this block for each image -->
+            <div class="wheel_card">
+                <img src="./download.jpg" alt="photo" />
+            </div>
+            <!-- Repeat as needed -->
+            <!-- Repeat this block for each image -->
+            <div class="wheel_card">
+                <img src="./download.jpg" alt="photo" />
+            </div>
+            <!-- Repeat as needed -->
+            <!-- Repeat this block for each image -->
+            <div class="wheel_card">
+                <img src="./jas.jpg" alt="photo" />
+            </div>
+            <!-- Repeat as needed -->
+            <!-- Repeat this block for each image -->
+            <div class="wheel_card">
+                <img src="./jas.jpg" alt="photo" />
+            </div>
+            <!-- Repeat as needed -->
+            <!-- Repeat this block for each image -->
+            <div class="wheel_card">
+                <img src="./jas.jpg" alt="photo" />
+            </div>
+            <!-- Repeat as needed -->
+        </div>
+    </section>
+    <div class="scroll_down">Scroll down</div>
+    <div class="scroll_icon">
+        <img src="https://storage.googleapis.com/studio-design-asset-files/projects/BXaK3jMq7/s-61x9_2c6bd15d-43e5-bf39-a6ff23fb93dd.svg" alt="" />
+    </div>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        let wheel = document.querySelector('.wheel');
+        let images = gsap.utils.toArray('.wheel_card');
+
+        function setup() {
+            let radius = wheel.offsetWidth / 2;
+            let center = radius;
+            let total = images.length;
+            let slice = (2 * Math.PI) / total;
+
+            images.forEach((item, i) => {
+                let angle = i * slice;
+                let x = Math.cos(angle) * radius;
+                let y = Math.sin(angle) * radius;
+
+                gsap.set(item, {
+                    x: x + center - item.offsetWidth / 2,
+                    y: y + center - item.offsetHeight / 2,
+                    rotation: angle + "rad"
+                });
+            });
+        }
+
+        gsap.to(".wheel", {
+            rotate: () => -360,
+            ease: "none",
+            duration: images.length,
+            scrollTrigger: {
+                start: 0,
+                end: "max",
+                scrub: 1,
+                snap: 1 / images.length,
+                invalidateOnRefresh: true
+            }
+        });
+
+        setup();
+        window.addEventListener('resize', setup);
+    </script>
+</body>
+</html>
