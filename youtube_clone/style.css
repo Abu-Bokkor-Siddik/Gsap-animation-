@@ -1,0 +1,73 @@
+body {
+  padding: 0;
+  margin: 0;
+  width: 600vh;
+  height: 100vh;
+  background: #90836a;
+  color: #000;
+}
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+h1 {
+  font-size: 8vh;
+  font-family: "Neue World Ultralight";
+  font-weight: lighter;
+  text-align: center;
+}
+.slider_section {
+  height: 22vh;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.wheel {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  width: 300vh;
+  height: 300vh;
+  max-width: 2000px;
+  max-height: 2000px;
+}
+.wheel_card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6%;
+  aspect-ratio: 1/1;
+  max-width: 200px;
+  cursor: pointer;
+}
+img {
+  width: 100%;
+  pointer-events: none;
+  z-index: 999;
+  cursor: pointer;
+}
+
+.scroll_icon img {
+  width: 50px;
+}
+.scroll_down {
+  font-family: "Neue World Ultralight";
+  position: fixed;
+  top: 3vh;
+  left: 2em;
+  color: #000;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 20px;
+  overflow: visible;
+}
