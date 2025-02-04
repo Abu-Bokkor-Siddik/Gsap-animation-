@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Shrink on Scroll</title>
+    <style>
+        body {
+            height: 200vh; /* Making the page scrollable */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f0f0;
+        }
+        .logo {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20%;
+            transition: all 0.5s ease;
+        }
+        .content {
+            margin-top: 100vh; /* To trigger the scroll effect */
+            width: 80%;
+            height: 300px;
+            background-color: white;
+            text-align: center;
+            padding: 50px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+</head>
+<body>
+
+    <img src="../download.jpg" alt="Logo" class="logo">
+    
+    <div class="content">
+        <h2>Scroll Down to See the Effect</h2>
+    </div>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.to(".logo", {
+            scrollTrigger: {
+                trigger: ".content",
+                start: "top 50%",
+                end: "top 100px",
+                markers:true,
+                scrub: true,
+            },
+            scale: 0.5, // Shrinks the logo
+            y: -50,     // Moves it upwards
+        });
+    </script>
+
+</body>
+</html>
