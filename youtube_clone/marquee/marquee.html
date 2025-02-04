@@ -1,66 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
-        .marquee {
-            overflow: hidden;
-            white-space: nowrap;
-            position: relative;
-            display: flex;
-            background-color: #E5E7EB; /* bg-gray-200 */
-        }
-        .marquee_inner {
-            display: flex;
-            flex-wrap: nowrap;
-            min-width: 200%;
-        }
+      .marquee {
+        overflow: hidden;
+        white-space: nowrap;
+        position: relative;
+        display: flex;
+        background-color: #e5e7eb; /* bg-gray-200 */
+      }
+      .marquee_inner {
+        display: flex;
+        flex-wrap: nowrap;
+        min-width: 200%;
+      }
     </style>
-</head>
-<body class="bg-gray-400">
+  </head>
+  <body class="bg-gray-400">
     <section class="space h-[800px]"></section>
 
     <section class="marquee text-black uppercase">
-        <div class="marquee_inner">
-            <!-- Content (duplicated for seamless scrolling) -->
-            <div class="marquee_part flex items-center justify-center gap-6 px-10">
-                Modern creative design
-                <img class="h-[40px] pr-[10px]" src="./3916800.png" alt="Arrow" />
-            </div>
-            <div class="marquee_part flex items-center justify-center gap-6 px-10">
-                Modern creative design
-                <img class="h-[40px] pr-[10px]" src="./3916800.png" alt="Arrow" />
-            </div>
-            <div class="marquee_part flex items-center justify-center gap-6 px-10">
-                Modern creative design
-                <img class="h-[40px] pr-[10px]" src="./3916800.png" alt="Arrow" />
-            </div>
-            <!-- Duplicate content for infinite effect -->
-            <div class="marquee_part flex items-center justify-center gap-6 px-10">
-                Modern creative design
-                <img class="h-[40px] pr-[10px]" src="./3916800.png" alt="Arrow" />
-            </div>
-            <div class="marquee_part flex items-center justify-center gap-6 px-10">
-                Modern creative design
-                <img class="h-[40px] pr-[10px]" src="./3916800.png" alt="Arrow" />
-            </div>
-            <div class="marquee_part flex items-center justify-center gap-6 px-10">
-                Modern creative design
-                <img class="h-[40px] pr-[10px]" src="./3916800.png" alt="Arrow" />
-            </div>
+      <div class="marquee_inner">
+        <!-- Content (duplicated for seamless scrolling) -->
+        <div class="marquee_part flex items-center justify-center gap-6 px-10">
+          Modern creative design
+          <img class="h-[40px] pr-[10px]" src="./3916800.png" alt="Arrow" />
         </div>
+        <div class="marquee_part flex items-center justify-center gap-6 px-10">
+          Modern creative design
+          <img class="h-[40px] pr-[10px]" src="./3916800.png" alt="Arrow" />
+        </div>
+        <div class="marquee_part flex items-center justify-center gap-6 px-10">
+          Modern creative design
+          <img class="h-[40px] pr-[10px]" src="./3916800.png" alt="Arrow" />
+        </div>
+        <!-- Duplicate content for infinite effect -->
+        <div class="marquee_part flex items-center justify-center gap-6 px-10">
+          Modern creative design
+          <img class="h-[40px] pr-[10px]" src="./3916800.png" alt="Arrow" />
+        </div>
+        <div class="marquee_part flex items-center justify-center gap-6 px-10">
+          Modern creative design
+          <img class="h-[40px] pr-[10px]" src="./3916800.png" alt="Arrow" />
+        </div>
+        <div class="marquee_part flex items-center justify-center gap-6 px-10">
+          Modern creative design
+          <img class="h-[40px] pr-[10px]" src="./3916800.png" alt="Arrow" />
+        </div>
+      </div>
     </section>
 
     <script>
-        gsap.to(".marquee_inner", {
-            xPercent: -50, // Moves it left by 50% of its width
-            duration: 5,   // Speed of animation
-            repeat: -1,    // Infinite loop
-            ease: "linear" // Smooth movement
-        });
+      gsap.to(".marquee_inner", {
+        xPercent: -50, // Moves it left by 50% of its width
+        duration: 5, // Speed of animation
+        repeat: -1, // Infinite loop
+        ease: "linear", // Smooth movement
+      });
     </script>
-</body>
+  </body>
 </html>
