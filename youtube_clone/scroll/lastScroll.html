@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Animation for Blocks & Images</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: white;
+            padding: 50px 0;
+        }
+        .spacer {
+            height: 100vh; /* Just for scrolling effect */
+        }
+        .blocks-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 50px 0;
+        }
+        .blocks-row {
+            display: flex;
+            gap: 5px;
+        }
+        .block {
+            width: 30px;
+            height: 30px;
+            background-color: #ff5722;
+            opacity: 0;
+        }
+        .image-container {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 50px 0;
+        }
+        .image-wrapper {
+            width: 200px;
+            height: 200px;
+            opacity: 0;
+            transform: scale(0.5);
+            overflow: hidden;
+        }
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="spacer"></div> <!-- Scroll down to see the animation -->
+
+    <!-- Block Animation Section -->
+    <div class="blocks-container">
+        <div class="blocks-row"></div>
+        <div class="blocks-row"></div>
+        <div class="blocks-row"></div>
+    </div>
+
+    <!-- Image Section -->
+    <div class="image-container">
+        <div class="image-wrapper"><img src="./download.jpg"></div>
+        <div class="image-wrapper"><img src="https://source.unsplash.com/200x200/?nature,2" alt="Image 2"></div>
+        <div class="image-wrapper"><img src="https://source.unsplash.com/200x200/?nature,3" alt="Image 3"></div>
+        <div class="image-wrapper"><img src="https://source.unsplash.com/200x200/?nature,4" alt="Image 4"></div>
+        <div class="image-wrapper"><img src="https://source.unsplash.com/200x200/?nature,5" alt="Image 5"></div>
+        <div class="image-wrapper"><img src="https://source.unsplash.com/200x200/?nature,6" alt="Image 6"></div>
+    </div>
+
+    <div class="spacer"></div> <!-- Extra space to scroll down -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Block Animation
+            const blockRows = document.querySelectorAll(".blocks-row");
+            blockRows.forEach(row => {
+                for (let i = 0; i < 16; i++) {
+                    const block = document.createElement("div");
+                    block.className = "block";
+                    row.appendChild(block);
+                }
+            });
+
+            const blockContainers = document.querySelectorAll(".blocks-container");
+
+            blockContainers.forEach((container) => {
+                const rows = container.querySelectorAll(".blocks-row");
+                const numRows = rows.length;
+
+                rows.forEach((row, rowIndex) => {
+                    let blocks = Array.from(row.querySelectorAll(".block"));
+                    let isTop = container.classList.contains("top");
+
+                    let randomizedOrder = gsap.utils.shuffle(blocks.map((block, idx) => idx));
+
+                    ScrollTrigger.create({
+                        trigger: container,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: true,
+                        onUpdate: (self) => {
+                            let progress = self.progress;
+                            let rowDelay = 0.3 * (numRows - rowIndex - 1);
+                            let adjustedProgress = Math.max(0, Math.min(1, progress - rowDelay));
+                            updateBlocksOpacity(blocks, randomizedOrder, isTop, adjustedProgress);
+                        }
+                    });
+                });
+            });
+
+            function updateBlocksOpacity(blocks, order, isTop, progress) {
+                blocks.forEach((block, idx) => {
+                    let offset = order.indexOf(idx) / blocks.length;
+                    let adjustedProgress = (progress - offset) * blocks.length;
+                    let opacity = isTop
+                        ? 1 - Math.min(1, Math.max(0, adjustedProgress))
+                        : Math.min(1, Math.max(0, adjustedProgress));
+                    block.style.opacity = opacity;
+                });
+            }
+
+            // Image Animation
+            gsap.utils.toArray(".image-wrapper").forEach((image, index) => {
+                gsap.fromTo(image, 
+                    { opacity: 0, scale: 0.5 }, // Start hidden & small
+                    { 
+                        opacity: 1, scale: 1, duration: 1, 
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: image,
+                            start: "top 80%", // Trigger when 80% of image is in viewport
+                            end: "top 50%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+        });
+    </script>
+
+</body>
+</html>
