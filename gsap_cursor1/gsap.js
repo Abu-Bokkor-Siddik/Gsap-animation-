@@ -1,5 +1,4 @@
-
-var  posX = 0,
+const posX = 0,
   posY = 0;
 
 var mouseX = 0,
