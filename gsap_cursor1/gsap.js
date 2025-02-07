@@ -1,7 +1,7 @@
 const posX = 0,
   posY = 0;
 
-var mouseX = 0,
+const  mouseX = 0,
   mouseY = 0;
 
 gsap.to(".cursor-example", {
