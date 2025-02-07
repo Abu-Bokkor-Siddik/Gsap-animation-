@@ -1,4 +1,4 @@
-const posX = 0,
+let posX = 0,
   posY = 0;
 
 const  mouseX = 0,
