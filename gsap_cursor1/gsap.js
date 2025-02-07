@@ -1,5 +1,5 @@
 
-let posX = 0,
+var  posX = 0,
   posY = 0;
 
 var mouseX = 0,
