@@ -33,6 +33,11 @@ document.addEventListener("DOMContentLoaded", function () {
             x: blockIndex % 2 === 0 ? -50 : 50,
             y: blockIndex % 3 === 0 ? -50 : 50,
           },
+
+
+
+
+          
           {
             opacity: 1,
             scale: 1,
