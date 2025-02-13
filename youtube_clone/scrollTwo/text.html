@@ -93,7 +93,7 @@
 
         blockContainers.forEach((container) => {
           const rows = container.querySelectorAll(".blocks-row");
-          const numRows = rows.length;
+          let numRows = rows.length;
 
           rows.forEach((row, rowIndex) => {
             let blocks = Array.from(row.querySelectorAll(".block"));
@@ -118,6 +118,8 @@
             });
           });
         });
+
+
 
         function updateBlocksOpacity(blocks, order, progress) {
           blocks.forEach((block, idx) => {
