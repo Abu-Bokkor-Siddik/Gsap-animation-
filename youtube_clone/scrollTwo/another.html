@@ -83,7 +83,7 @@
 
         blockContainers.forEach((container) => {
           const rows = container.querySelectorAll(".blocks-row");
-          const numRows = rows.length;
+          let  numRows = rows.length;
 
           rows.forEach((row, rowIndex) => {
             var blocks = Array.from(row.querySelectorAll(".block"));
