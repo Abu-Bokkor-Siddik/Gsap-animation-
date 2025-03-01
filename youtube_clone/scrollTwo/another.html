@@ -98,7 +98,7 @@
               scrub: true,
               onUpdate: (self) => {
               var progress = self.progress;
-                let rowDelay = 0.3 * (numRows - rowIndex - 1);
+                var rowDelay = 0.3 * (numRows - rowIndex - 1);
                 let adjustedProgress = Math.max(
                   0,
                   Math.min(1, progress - rowDelay)
