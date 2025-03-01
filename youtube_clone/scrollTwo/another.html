@@ -99,7 +99,7 @@
               onUpdate: (self) => {
               var progress = self.progress;
                 var rowDelay = 0.3 * (numRows - rowIndex - 1);
-                let adjustedProgress = Math.max(
+                var adjustedProgress = Math.max(
                   0,
                   Math.min(1, progress - rowDelay)
                 );
