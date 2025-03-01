@@ -87,7 +87,7 @@
 
           rows.forEach((row, rowIndex) => {
             var blocks = Array.from(row.querySelectorAll(".block"));
-          var  randomizedOrder = gsap.utils.shuffle(
+          let randomizedOrder = gsap.utils.shuffle(
               blocks.map((block, idx) => idx)
             );
 
